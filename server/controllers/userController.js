@@ -378,10 +378,16 @@ const cancelAppointment = async (req, res) => {
 };
 
 // ==================== Payments ====================
-const razorpayIns = new razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
+let razorpayIns;
+
+// Initialize Razorpay only if keys exist
+if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+  const Razorpay = await import("razorpay"); // dynamic import for ESM
+  razorpayIns = new Razorpay.default({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  });
+}
 
 const payment = async (req, res) => {
   try {
@@ -390,6 +396,18 @@ const payment = async (req, res) => {
 
     if (!appointmentData || appointmentData.cancelled)
       return res.json({ success: false, message: "Appointment cancelled" });
+
+    // If Razorpay not configured, simulate an order
+    if (!razorpayIns) {
+      const fakeOrder = {
+        id: "order_test_123",
+        amount: appointmentData.amount * 100,
+        currency: process.env.CURRENCY || "INR",
+        receipt: appointmentID,
+        status: "created",
+      };
+      return res.json({ success: true, order: fakeOrder, message: "Payment gateway not configured" });
+    }
 
     const options = {
       amount: appointmentData.amount * 100,
@@ -408,6 +426,13 @@ const payment = async (req, res) => {
 const verifyPayment = async (req, res) => {
   try {
     const { razorpay_order_id } = req.body;
+
+    // If Razorpay not configured, simulate a successful payment
+    if (!razorpayIns) {
+      await appointmentModel.findByIdAndUpdate(razorpay_order_id, { payment: true });
+      return res.json({ success: true, message: "Payment simulated as successful" });
+    }
+
     const orderInfo = await razorpayIns.orders.fetch(razorpay_order_id);
 
     if (orderInfo.status === "paid") {

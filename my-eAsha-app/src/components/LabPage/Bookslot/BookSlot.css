@@ -1,0 +1,155 @@
+.login-wrapper {
+  padding: 20px;
+}
+
+@media (min-width: 992px) {
+  .login-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Custom radio/checkbox */
+.form-check-input:checked {
+  background-color: #00A99D !important;
+  border-color: #00A99D !important;
+}
+
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 169, 157, 0.25) !important;
+  border-color: #00A99D !important;
+}
+
+/* Calendar Popup Styling */
+.react-datepicker-popper {
+  z-index: 9999 !important;
+}
+
+/* Datepicker container */
+.react-datepicker {
+  width: 342px;
+  height: 328;
+  border: 1px solid #E6E6E6;
+  border-radius: 28px;
+  background-color: #ffffff;
+  font-family: 'Urbanist', sans-serif;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  position: absolute; /* Make it a popup */
+}
+
+/* Header */
+.react-datepicker__header {
+  background-color: #ffffff;
+  border: none;
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+}
+
+/* Current Month */
+.react-datepicker__current-month {
+  font-size: 16px;
+  font-weight: 600;
+  /* color: #444; */
+  margin-bottom: 10px;
+  width: "294px";
+}
+
+/* Days and Names */
+.react-datepicker__day-name,
+.react-datepicker__day {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  margin: 2px;
+  font-weight: 500;
+}
+
+/* Selected day */
+.react-datepicker__day--selected {
+  background-color: #EDFFFE !important;
+  color: #00A99D !important;
+  border: none !important;
+}
+
+/* Disabled dates */
+.react-datepicker__day--disabled {
+  color: #8E8E8E;
+  text-decoration: line-through;
+  text-decoration-color: #E23F3F;
+  pointer-events: none;
+}
+
+/* Navigation */
+.react-datepicker__navigation {
+  top: 14px;
+  background: transparent;
+  border: none;
+}
+
+.react-datepicker__navigation-icon::before {
+  border-color: #999;
+}
+
+/* Custom calendar wrapper */
+.calendar-wrapper {
+  font-family: "Urbanist", sans-serif;
+  height: auto !important;
+  width: auto !important;
+  padding: 0;
+}
+
+/* Override for custom popper (if needed) */
+.custom-datepicker-popper {
+  width: 342px !important;
+  border-radius: 28px !important;
+  border: 1px solid #E6E6E6 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  z-index: 9999 !important;
+  /* padding: 10px; */
+  position: absolute !important;
+}
+/* Confirm Apointment css*/
+.doctor-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.emoji-star {
+  font-size: 18px;
+}
+
+.fixed-panel {
+  position: sticky;
+  top: 80px;
+  background: white;
+}
+
+.calendar-box {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.qr-img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.pay-logo {
+  width: 40px;
+  height: 40px;
+}
+.weekday-pill {
+  width: 40px;
+  padding: 6px 0;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 14px;
+}

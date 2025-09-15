@@ -1,0 +1,35 @@
+.mainContainer {
+  margin-top: 66px;
+}
+
+@media (min-width :  425px) {
+    .mainContainer {
+      width: 90% !important;  
+      margin-top:  0px !important;
+      overflow: auto !important;
+      margin-left: 1.2rem !important;
+    }
+
+}
+
+@media (min-width : 768px) {
+    .mainContainer {
+        width: 95% !important;
+    }
+   
+}
+
+@media (min-width : 1024px) {
+    .mainContainer {
+       max-width: 75% !important;
+       margin-left: 220px !important;
+    }
+}
+
+@media (min-width : 1440px) {
+    .mainContainer {
+        max-width: 75% !important;
+        margin-left: 310px !important;
+        overflow-x: hidden !important;
+    }
+}
