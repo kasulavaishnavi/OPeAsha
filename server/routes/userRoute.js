@@ -22,7 +22,7 @@ import {
   verifyForgotPasswordOTP,
   resetPassword,
 } from "../controllers/userController.js";
-
+import {login} from "../controllers/loginController.js"
 const userRouter = express.Router();
 
 // === Standard Auth Routes ===
@@ -55,5 +55,9 @@ userRouter.post("/resendLoginOTP", resendLoginOTP);
 userRouter.post("/forgotPasswordOTP", forgotPasswordOTP);
 userRouter.post("/verifyForgotPasswordOTP", verifyForgotPasswordOTP);
 userRouter.post("/resetPassword", resetPassword);
+
+
+// Register a new user in app
+userRouter.post("/register", login);
 
 export default userRouter;
